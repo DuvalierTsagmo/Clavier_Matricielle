@@ -135,7 +135,7 @@ void loop()
         break;
     }
 
-    // ici ont confirme le boutton de l'intensiter
+    // ici ont confirme le boutton et l'intensiter de la LED
     if (boutton == '#')
     {
         intensiteAllumLed = map(valeur_Intensite, 0, 9, 0, 255);
