@@ -46,11 +46,8 @@ void setup()
 void loop()
 {
 
+    // choix de la LED
     boutton = kp4x4.getKey();
-    if (boutton)
-    {
-        Serial.println("Fonciton loop");
-    }
 
     switch (boutton)
 
@@ -72,6 +69,7 @@ void loop()
         break;
     }
 
+    // on confirme la selection du boutton
     if (boutton == '*')
     {
         switch (dernierBoutton)
@@ -94,6 +92,7 @@ void loop()
         }
     }
 
+    // ces le choix de l'intensiter de la LED
     switch (boutton)
     {
     case '0':
@@ -137,6 +136,7 @@ void loop()
         break;
     }
 
+    // ici ont confirme le boutton de l'intensiter
     if (boutton == '#')
     {
         intensiteAllumLed = map(valeur_Intensite, 0, 9, 0, 255);
