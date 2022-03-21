@@ -7,8 +7,8 @@
 */
 
 #include <Arduino.h>
-//#include "WIFIConnector_MKR1000.h"
-//#include "MQTTConnector.h"
+#include "WIFIConnector_MKR1000.h"
+#include "MQTTConnector.h"
 
 // Libraries
 #include <Keypad.h> //https://github.com/Chris--A/Keypad
@@ -35,7 +35,8 @@ Keypad kp4x4 = Keypad(makeKeymap(kp4x4Keys), rowKp4x4Pin, colKp4x4Pin, ROWS, COL
 
 void setup()
 {
-
+    wifiConnect;
+    MQTTConnect;
     // Init Serial USB
     Serial.begin(9600);
     Serial.println(F("Initialize System"));
@@ -141,7 +142,7 @@ void loop()
         analogWrite(led_Allum, intensiteAllumLed);
     }
 
-    appendPayload("Pompe", Pompe);
-    appendPayload("ValeurSensor", ValeurSensor);
+    appendPayload("INTENSITER", valeur_Intensite);
+    appendPayload("LUMIERE", led_Allum);
     sendPayload();
 }
