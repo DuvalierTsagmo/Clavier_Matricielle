@@ -17,8 +17,7 @@
 #define ROWS 4
 #define COLS 4
 
-// Parameters
-
+// Declaration des variables
 const int LED_0 = 0;
 const int LED_1 = 1;
 const int LED_2 = 2;
@@ -30,19 +29,19 @@ const char kp4x4Keys[ROWS][COLS] = {{'1', '2', '3', 'A'}, {'4', '5', '6', 'B'}, 
 byte rowKp4x4Pin[4] = {11, 10, 9, 8};
 byte colKp4x4Pin[4] = {7, 6, 5, 4};
 
-// Variables
 Keypad kp4x4 = Keypad(makeKeymap(kp4x4Keys), rowKp4x4Pin, colKp4x4Pin, ROWS, COLS);
 
+// fonctions setup
 void setup()
 {
     Serial.begin(9600);
     wifiConnect();
     MQTTConnect();
     Serial.println("Fonciton Setup");
-    // Init Serial USB
     Serial.println(F("Initialize System"));
 }
 
+// developpement des fonctions
 void loop()
 {
 
