@@ -35,21 +35,22 @@ Keypad kp4x4 = Keypad(makeKeymap(kp4x4Keys), rowKp4x4Pin, colKp4x4Pin, ROWS, COL
 
 void setup()
 {
-    wifiConnect;
-    MQTTConnect;
-    // Init Serial USB
     Serial.begin(9600);
+    wifiConnect();
+    MQTTConnect();
+    Serial.println("Fonciton Setup");
+    // Init Serial USB
     Serial.println(F("Initialize System"));
-
-    pinMode(LED_0, OUTPUT);
-    pinMode(LED_1, OUTPUT);
-    pinMode(LED_2, OUTPUT);
-    pinMode(LED_3, OUTPUT);
 }
 
 void loop()
 {
+
     boutton = kp4x4.getKey();
+    if (boutton)
+    {
+        Serial.println("Fonciton loop");
+    }
 
     switch (boutton)
 
@@ -140,9 +141,8 @@ void loop()
     {
         intensiteAllumLed = map(valeur_Intensite, 0, 9, 0, 255);
         analogWrite(led_Allum, intensiteAllumLed);
+        appendPayload("LUMIERE", led_Allum);
+        appendPayload("INTENSITE", intensiteAllumLed);
+        sendPayload();
     }
-
-    appendPayload("INTENSITER", valeur_Intensite);
-    appendPayload("LUMIERE", led_Allum);
-    sendPayload();
 }
